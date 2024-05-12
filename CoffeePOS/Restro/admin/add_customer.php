@@ -3,27 +3,27 @@ session_start();
 include('config/config.php');
 include('config/checklogin.php');
 include('config/code-generator.php');
-//Visit codeastro.com for more projects
+
 check_login();
 //Add Customer
 if (isset($_POST['addCustomer'])) {
-  //Prevent Posting Blank Values
+  //ป้องกันการโพสต์ค่าที่ว่างเปล่า
   if (empty($_POST["customer_phoneno"]) || empty($_POST["customer_name"]) || empty($_POST['customer_email']) || empty($_POST['customer_password'])) {
     $err = "Blank Values Not Accepted";
   } else {
     $customer_name = $_POST['customer_name'];
     $customer_phoneno = $_POST['customer_phoneno'];
     $customer_email = $_POST['customer_email'];
-    $customer_password = sha1(md5($_POST['customer_password'])); //Hash This 
+    $customer_password = sha1(md5($_POST['customer_password']));
     $customer_id = $_POST['customer_id'];
 
-    //Insert Captured information to a database table
+    //แทรกข้อมูลที่บันทึกลงในตาราง database
     $postQuery = "INSERT INTO rpos_customers (customer_id, customer_name, customer_phoneno, customer_email, customer_password) VALUES(?,?,?,?,?)";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
     $rc = $postStmt->bind_param('sssss', $customer_id, $customer_name, $customer_phoneno, $customer_email, $customer_password);
     $postStmt->execute();
-    //declare a varible which will be passed to alert function
+    //ประกาศตัวแปรที่จะส่งไปฟังก์ชั่นการแจ้งเตือน
     if ($postStmt) {
       $success = "Customer Added" && header("refresh:1; url=customes.php");
     } else {
@@ -31,12 +31,12 @@ if (isset($_POST['addCustomer'])) {
     }
   }
 }
-//Visit codeastro.com for more projects
+
 require_once('partials/_head.php');
 ?>
 
 <body>
-<!-- For more projects: Visit codeastro.com  -->
+
   <!-- Sidenav -->
   <?php
   require_once('partials/_sidebar.php');
@@ -63,7 +63,7 @@ require_once('partials/_head.php');
           <div class="card shadow">
             <div class="card-header border-0">
               <h3>Please Fill All Fields</h3>
-            </div><!-- For more projects: Visit codeastro.com  -->
+            </div>
             <div class="card-body">
               <form method="POST">
                 <div class="form-row">
@@ -88,7 +88,7 @@ require_once('partials/_head.php');
                     <input type="password" name="customer_password" class="form-control" value="">
                   </div>
                 </div>
-                <br><!-- For more projects: Visit codeastro.com  -->
+                <br>
                 <div class="form-row">
                   <div class="col-md-6">
                     <input type="submit" name="addCustomer" value="Add Customer" class="btn btn-success" value="">
@@ -99,7 +99,7 @@ require_once('partials/_head.php');
           </div>
         </div>
       </div>
-      <!-- Footer --><!-- For more projects: Visit codeastro.com  -->
+      <!-- Footer -->
       <?php
       require_once('partials/_footer.php');
       ?>
