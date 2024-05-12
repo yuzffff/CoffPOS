@@ -1,7 +1,7 @@
 
 <?php
     $dbuser="root";
-    $dbpass="";
+    $dbpass="root";
     $host="localhost";
     $db="cposystem";
     $mysqli=new mysqli($host,$dbuser, $dbpass, $db);
