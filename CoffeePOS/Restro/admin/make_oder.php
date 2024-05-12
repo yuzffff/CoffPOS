@@ -6,7 +6,7 @@ include('config/code-generator.php');
 
 check_login();
 if (isset($_POST['make'])) {
-  //Prevent Posting Blank Values
+  //ป้องกันการโพสต์ค่าที่ว่างเปล่า
   if (empty($_POST["order_code"]) || empty($_POST["customer_name"]) || empty($_GET['prod_price'])) {
     $err = "Blank Values Not Accepted";
   } else {
@@ -19,13 +19,13 @@ if (isset($_POST['make'])) {
     $prod_price = $_GET['prod_price'];
     $prod_qty = $_POST['prod_qty'];
 
-    //Insert Captured information to a database table
+    //แทรกข้อมูลที่บันทึกลงในตาราง database
     $postQuery = "INSERT INTO rpos_orders (prod_qty, order_id, order_code, customer_id, customer_name, prod_id, prod_name, prod_price) VALUES(?,?,?,?,?,?,?,?)";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
     $rc = $postStmt->bind_param('ssssssss', $prod_qty, $order_id, $order_code, $customer_id, $customer_name, $prod_id, $prod_name, $prod_price);
     $postStmt->execute();
-    //declare a varible which will be passed to alert function
+    //ประกาศตัวแปรที่จะส่งไปฟังก์ชั่นการแจ้งเตือน
     if ($postStmt) {
       $success = "Order Submitted" && header("refresh:1; url=payments.php");
     } else {
