@@ -6,7 +6,7 @@ include('config/code-generator.php');
 
 check_login();
 if (isset($_POST['ChangeProfile'])) {
-  //Prevent Posting Blank Values
+  //Prevent Posting Blank Values sorapat
   if (empty($_POST["customer_phoneno"]) || empty($_POST["customer_name"]) || empty($_POST['customer_email'])) {
     $err = "Blank Values Not Accepted";
   } else {
