@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 04, 2022 at 06:41 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Host: localhost
+-- Generation Time: May 12, 2024 at 12:15 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `rposystem`
+-- Database: `cposystem`
 --
 
 -- --------------------------------------------------------
@@ -52,7 +53,7 @@ CREATE TABLE `rpos_customers` (
   `customer_phoneno` varchar(200) NOT NULL,
   `customer_email` varchar(200) NOT NULL,
   `customer_password` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -60,20 +61,20 @@ CREATE TABLE `rpos_customers` (
 --
 
 INSERT INTO `rpos_customers` (`customer_id`, `customer_name`, `customer_phoneno`, `customer_email`, `customer_password`, `created_at`) VALUES
-('06549ea58afd', 'Ana J. Browne', '4589698780', 'anaj@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:39:48.523820'),
-('1fc1f694985d', 'Jane Doe', '2145896547', 'janed@mail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2022-09-03 13:39:13.076592'),
-('27e4a5bc74c2', 'Tammy R. Polley', '4589654780', 'tammy@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:37:47.049438'),
-('29c759d624f9', 'Trina L. Crowder', '5896321002', 'trina@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 13:16:18.927595'),
-('35135b319ce3', 'Christine Moore', '7412569698', 'christine@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-04 16:29:45.133297'),
-('3859d26cd9a5', 'Louise R. Holloman', '7856321000', 'holloman@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:38:12.149280'),
-('57b7541814ed', 'Howard W. Anderson', '8745554589', 'howard@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 08:35:10.959590'),
-('7c8f2100d552', 'Melody E. Hance', '3210145550', 'melody@mail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2022-09-03 13:16:23.996068'),
-('9c7fcc067bda', 'Delbert G. Campbell', '7850001256', 'delbert@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:38:56.944364'),
-('9f6378b79283', 'William C. Gallup', '7145665870', 'william@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:39:26.507932'),
-('d0ba61555aee', 'Jamie R. Barnes', '4125556587', 'jamie@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:36:59.643216'),
-('d7c2db8f6cbf', 'Victor A. Pierson', '1458887896', 'victor@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:37:21.568155'),
-('e711dcc579d9', 'Julie R. Martin', '3245557896', 'julie@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2022-09-03 12:38:33.397498'),
-('fe6bb69bdd29', 'Brian S. Boucher', '1020302055', 'brians@mail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2022-09-03 13:16:29.591980');
+('06549ea58afd', 'Aliyah', '0956756679', 'aliyahjandee@gmail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 09:30:44.129168'),
+('1fc1f694985d', 'Benjamin', '0899976524', 'Benjasaton@gmail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2024-05-12 09:32:35.909666'),
+('27e4a5bc74c2', 'Jariya', '0923114567', 'Jariyasuchao@gmail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 09:36:05.559618'),
+('29c759d624f9', 'Natthapong', '0821334538', 'NatthapongFangthong@gmail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 09:37:50.240770'),
+('35135b319ce3', 'Thitipan', '09877689972', 'thitizaa@gmail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 09:38:54.806329'),
+('3859d26cd9a5', 'Prapon', '0957967702', 'praponRuji8@gmail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 09:40:14.411881'),
+('57b7541814ed', 'sarun', '0897213456', 'saranya@gmail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 09:40:47.006407'),
+('7c8f2100d552', 'Areeya', '0986754367', 'Chongsatientam@gmail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2024-05-12 09:41:59.439433'),
+('9c7fcc067bda', 'Urai', '0870023452', 'UraiBunyiem@mail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 09:42:48.118718'),
+('9f6378b79283', 'Arnon', '0823345647', 'Arnonhomjung@gmail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 09:43:32.527848'),
+('d0ba61555aee', 'Jamebrone', '0865657860', 'jameesang@gmail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 09:44:40.986251'),
+('d7c2db8f6cbf', 'Sirirat', '0856123245', 'sirirattt1@gmail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 09:45:55.373604'),
+('e711dcc579d9', 'maroot', '0946782317', 'kamhom123@gmail.com', '55c3b5386c486feb662a0785f340938f518d547f', '2024-05-12 10:00:43.577208'),
+('fe6bb69bdd29', 'kunnaphat', '0987898891', 'seethong@gmail.com', 'a69681bcf334ae130217fea4505fd3c994f5683f', '2024-05-12 10:00:51.941955');
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ CREATE TABLE `rpos_orders` (
   `prod_price` varchar(200) NOT NULL,
   `prod_qty` varchar(200) NOT NULL,
   `order_status` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -123,7 +124,7 @@ CREATE TABLE `rpos_pass_resets` (
   `reset_token` varchar(200) NOT NULL,
   `reset_email` varchar(200) NOT NULL,
   `reset_status` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -146,7 +147,7 @@ CREATE TABLE `rpos_payments` (
   `customer_id` varchar(200) NOT NULL,
   `pay_amt` varchar(200) NOT NULL,
   `pay_method` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -179,7 +180,7 @@ CREATE TABLE `rpos_products` (
   `prod_img` varchar(200) NOT NULL,
   `prod_desc` longtext NOT NULL,
   `prod_price` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -226,7 +227,7 @@ CREATE TABLE `rpos_staff` (
   `staff_number` varchar(200) NOT NULL,
   `staff_email` varchar(200) NOT NULL,
   `staff_password` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -294,11 +295,13 @@ ALTER TABLE `rpos_staff`
 --
 ALTER TABLE `rpos_pass_resets`
   MODIFY `reset_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `rpos_staff`
 --
 ALTER TABLE `rpos_staff`
   MODIFY `staff_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- Constraints for dumped tables
 --
@@ -309,6 +312,7 @@ ALTER TABLE `rpos_staff`
 ALTER TABLE `rpos_orders`
   ADD CONSTRAINT `CustomerOrder` FOREIGN KEY (`customer_id`) REFERENCES `rpos_customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ProductOrder` FOREIGN KEY (`prod_id`) REFERENCES `rpos_products` (`prod_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
