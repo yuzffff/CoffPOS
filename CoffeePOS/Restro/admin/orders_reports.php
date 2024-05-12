@@ -7,7 +7,7 @@ require_once('partials/_head.php');
 ?>
 
 <body>
-    <!-- Sidenav --><!-- For more projects: Visit codeastro.com  -->
+    <!-- Sidenav -->
     <?php
     require_once('partials/_sidebar.php');
     ?>
@@ -33,7 +33,7 @@ require_once('partials/_head.php');
                     <div class="card shadow">
                         <div class="card-header border-0">
                             Orders Records
-                        </div><!-- For more projects: Visit codeastro.com  -->
+                        </div>
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
@@ -42,7 +42,7 @@ require_once('partials/_head.php');
                                         <th scope="col">Customer</th>
                                         <th class="text-success" scope="col">Product</th>
                                         <th scope="col">Unit Price</th>
-                                        <th class="text-success" scope="col">#</th>
+                                        <th class="text-success" scope="col">Quantity</th>
                                         <th scope="col">Total Price</th>
                                         <th scop="col">Status</th>
                                         <th scope="col">Date</th>
@@ -78,7 +78,7 @@ require_once('partials/_head.php');
                         </div>
                     </div>
                 </div>
-            </div><!-- For more projects: Visit codeastro.com  -->
+            </div>
             <!-- Footer -->
             <?php
             require_once('partials/_footer.php');
@@ -90,5 +90,5 @@ require_once('partials/_head.php');
     require_once('partials/_scripts.php');
     ?>
 </body>
-<!-- For more projects: Visit codeastro.com  -->
+
 </html>

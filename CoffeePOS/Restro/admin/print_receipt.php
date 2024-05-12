@@ -12,7 +12,7 @@ check_login();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="MartDevelopers Inc">
-    <title>Restaurant Point Of Sale </title>
+    <title>Coffee Point Of Sale </title>
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32x32.png">
@@ -49,13 +49,11 @@ while ($order = $res->fetch_object()) {
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <address>
-                                <strong>CodeAstro Lounge</strong>
+                                <strong>Cooffe POS</strong>
                                 <br>
-                                127-0-0-1
+                                889 DinDang, Bangkok
                                 <br>
-                                4151 Willow Oaks Lane, Sugartown
-                                <br>
-                                (+000) 337-337-3069
+                                (+000) 062-886-0007
                             </address>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">

@@ -4,7 +4,7 @@ include('config/config.php');
 //login 
 if (isset($_POST['login'])) {
   $admin_email = $_POST['admin_email'];
-  $admin_password = sha1(md5($_POST['admin_password'])); //double encrypt to increase security
+  $admin_password = sha1(md5($_POST['admin_password'])); // เข้ารหัสสองครั้งเพื่อเพิ่มความปลอดภัย
   $stmt = $mysqli->prepare("SELECT admin_email, admin_password, admin_id  FROM   rpos_admin WHERE (admin_email =? AND admin_password =?)"); //sql to log in user
   $stmt->bind_param('ss',  $admin_email, $admin_password); //bind fetched parameters
   $stmt->execute(); //execute bind 
@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
   $_SESSION['admin_id'] = $admin_id;
   if ($rs) {
     //if its sucessfull
-	//Visit codeastro.com for more projects
+	
     header("location:dashboard.php");
   } else {
     $err = "Incorrect Authentication Credentials ";
@@ -29,12 +29,12 @@ require_once('partials/_head.php');
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Restaurant Point Of Sale System</h1>
+              <h1 class="text-white">Coffee Point Of Sale System</h1>
             </div>
           </div>
         </div>
       </div>
-    </div><!-- For more projects: Visit codeastro.com  -->
+    </div>
     <!-- Page content -->
     <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
@@ -49,7 +49,7 @@ require_once('partials/_head.php');
                     </div>
                     <input class="form-control" required name="admin_email" placeholder="Email" type="email">
                   </div>
-                </div><!-- For more projects: Visit codeastro.com  -->
+                </div>
                 <div class="form-group">
                   <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
@@ -89,5 +89,5 @@ require_once('partials/_head.php');
   require_once('partials/_scripts.php');
   ?>
 </body>
-<!-- For more projects: Visit codeastro.com  -->
+
 </html>

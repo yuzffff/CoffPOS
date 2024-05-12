@@ -37,16 +37,16 @@ while ($admin = $res->fetch_object()) {
           </a>
           <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
             <div class=" dropdown-header noti-title">
-              <h6 class="text-overflow m-0">Welcome!</h6>
+              <h6 class="text-overflow m-0">Function!</h6>
             </div>
             <a href="change_profile.php" class="dropdown-item">
               <i class="ni ni-single-02"></i>
-              <span>My profile</span>
+              <span>My Profile</span>
             </a>
             <div class="dropdown-divider"></div>
             <a href="logout.php" class="dropdown-item">
               <i class="ni ni-user-run"></i>
-              <span>Logout</span>
+              <span>LogOut</span>
             </a>
           </div>
         </li>
@@ -89,7 +89,7 @@ while ($admin = $res->fetch_object()) {
           </li>
           <li class="nav-item">
             <a class="nav-link" href="hrm.php">
-              <i class="fas fa-user-tie text-primary"></i> HRM
+              <i class="fas fa-user-tie text-primary"></i> Add Staff
             </a>
           </li>
           <li class="nav-item">

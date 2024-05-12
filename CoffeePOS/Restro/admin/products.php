@@ -5,22 +5,24 @@ include('config/checklogin.php');
 check_login();
 if (isset($_GET['delete'])) {
   $id = intval($_GET['delete']);
-  $adn = "DELETE FROM  rpos_products  WHERE  prod_id = ?";
+  $adn = "DELETE FROM rpos_products WHERE prod_id = ?";
   $stmt = $mysqli->prepare($adn);
   $stmt->bind_param('s', $id);
   $stmt->execute();
-  $stmt->close();
-  if ($stmt) {
-    $success = "Deleted" && header("refresh:1; url=products.php");
+  if ($stmt->affected_rows > 0) {
+    $success = "Deleted";
   } else {
     $err = "Try Again Later";
   }
+  $stmt->close();
+  header("refresh:1; url=products.php");
 }
 require_once('partials/_head.php');
 ?>
 
+
 <body>
-  <!-- Sidenav --><!-- For more projects: Visit codeastro.com  -->
+  <!-- Sidenav -->
   <?php
   require_once('partials/_sidebar.php');
   ?>
@@ -48,7 +50,7 @@ require_once('partials/_head.php');
               <a href="add_product.php" class="btn btn-outline-success">
                 <i class="fas fa-utensils"></i>
                 Add New Product
-              </a><!-- For more projects: Visit codeastro.com  -->
+              </a>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
@@ -60,7 +62,7 @@ require_once('partials/_head.php');
                     <th scope="col">Price</th>
                     <th scope="col">Actions</th>
                   </tr>
-                </thead><!-- For more projects: Visit codeastro.com  -->
+                </thead>
                 <tbody>
                   <?php
                   $ret = "SELECT * FROM  rpos_products ";
@@ -98,7 +100,7 @@ require_once('partials/_head.php');
                           </button>
                         </a>
                       </td>
-                    </tr><!-- For more projects: Visit codeastro.com  -->
+                    </tr>
                   <?php } ?>
                 </tbody>
               </table>
@@ -117,5 +119,5 @@ require_once('partials/_head.php');
   require_once('partials/_scripts.php');
   ?>
 </body>
-<!-- For more projects: Visit codeastro.com  -->
+
 </html>

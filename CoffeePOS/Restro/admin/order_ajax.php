@@ -1,6 +1,6 @@
 <?php
 include('config/config.php');
-//Get The price per purhcased quantity
+// รับค่าราคาของต่อปริมาณที่ซื้อ
 $ret = "SELECT * FROM  LAMCorp_waterTariffs";
 $stmt = $mysqli->prepare($ret);
 $stmt->execute(); //ok

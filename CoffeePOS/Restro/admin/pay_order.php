@@ -7,8 +7,7 @@ include('config/code-generator.php');
 check_login();
 
 if (isset($_POST['pay'])) {
-  //Prevent Posting Blank Values
-  //Visit codeastro.com for more projects
+  //ป้องกันการโพสต์ค่าที่ว่างเปล่า
   if (empty($_POST["pay_code"]) || empty($_POST["pay_amt"]) || empty($_POST['pay_method'])) {
     $err = "Blank Values Not Accepted";
   } else {
@@ -22,7 +21,7 @@ if (isset($_POST['pay'])) {
 
     $order_status = $_GET['order_status'];
 
-    //Insert Captured information to a database table
+    //แทรกข้อมูลที่บันทึกลงในตาราง database
     $postQuery = "INSERT INTO rpos_payments (pay_id, pay_code, order_code, customer_id, pay_amt, pay_method) VALUES(?,?,?,?,?,?)";
     $upQry = "UPDATE rpos_orders SET order_status =? WHERE order_code =?";
 
@@ -35,7 +34,7 @@ if (isset($_POST['pay'])) {
 
     $postStmt->execute();
     $upStmt->execute();
-    //declare a varible which will be passed to alert function
+    //ประกาศตัวแปรที่จะส่งไปฟังก์ชั่นการแจ้งเตือน
     if ($upStmt && $postStmt) {
       $success = "Paid" && header("refresh:1; url=receipts.php");
     } else {
@@ -77,7 +76,7 @@ require_once('partials/_head.php');
     <!-- Page content -->
     <div class="container-fluid mt--8">
       <!-- Table -->
-      <div class="row"><!-- For more projects: Visit codeastro.com  -->
+      <div class="row">
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
@@ -109,7 +108,7 @@ require_once('partials/_head.php');
                     </select>
                   </div>
                 </div>
-                <br><!-- For more projects: Visit codeastro.com  -->
+                <br>
                 <div class="form-row">
                   <div class="col-md-6">
                     <input type="submit" name="pay" value="Pay Order" class="btn btn-success" value="">
@@ -131,5 +130,5 @@ require_once('partials/_head.php');
   require_once('partials/_scripts.php'); }
   ?>
 </body>
-<!-- For more projects: Visit codeastro.com  -->
+
 </html>

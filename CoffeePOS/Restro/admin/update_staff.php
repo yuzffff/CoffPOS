@@ -7,7 +7,7 @@ include('config/code-generator.php');
 check_login();
 //Udpate Staff
 if (isset($_POST['UpdateStaff'])) {
-  //Prevent Posting Blank Values
+  //ป้องกันการโพสต์ค่าที่ว่างเปล่า
   if (empty($_POST["staff_number"]) || empty($_POST["staff_name"]) || empty($_POST['staff_email']) || empty($_POST['staff_password'])) {
     $err = "Blank Values Not Accepted";
   } else {
@@ -17,13 +17,13 @@ if (isset($_POST['UpdateStaff'])) {
     $staff_password = $_POST['staff_password'];
     $update = $_GET['update'];
 
-    //Insert Captured information to a database table
+    //แทรกข้อมูลที่บันทึกลงในตาราง database
     $postQuery = "UPDATE rpos_staff SET  staff_number =?, staff_name =?, staff_email =?, staff_password =? WHERE staff_id =?";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
     $rc = $postStmt->bind_param('ssssi', $staff_number, $staff_name, $staff_email, $staff_password, $update);
     $postStmt->execute();
-    //declare a varible which will be passed to alert function
+    //ประกาศตัวแปรที่จะส่งไปฟังก์ชั่นการแจ้งเตือน
     if ($postStmt) {
       $success = "Staff Updated" && header("refresh:1; url=hrm.php");
     } else {
