@@ -13,7 +13,7 @@ if (isset($_POST['ChangeProfile'])) {
   //bind paramaters
   $rc = $postStmt->bind_param('sss', $admin_name, $admin_email, $admin_id);
   $postStmt->execute();
-  //declare a varible which will be passed to alert function
+  //ประกาศตัวแปรที่จะส่งไปฟังก์ชั่นการแจ้งเตือน
   if ($postStmt) {
     $success = "Account Updated" && header("refresh:1; url=dashboard.php");
   } else {
@@ -56,14 +56,14 @@ if (isset($_POST['changePassword'])) {
       } else {
 
         $new_password  = sha1(md5($_POST['new_password']));
-        //Insert Captured information to a database table
+        //แทรกข้อมูลที่บันทึกลงในตาราง database
         $query = "UPDATE rpos_admin SET  admin_password =? WHERE admin_id =?";
         $stmt = $mysqli->prepare($query);
         //bind paramaters
         $rc = $stmt->bind_param('ss', $new_password, $admin_id);
         $stmt->execute();
 
-        //declare a varible which will be passed to alert function
+        //ประกาศตัวแปรที่จะส่งไปฟังก์ชั่นการแจ้งเตือน
         if ($stmt) {
           $success = "Password Changed" && header("refresh:1; url=dashboard.php");
         } else {
