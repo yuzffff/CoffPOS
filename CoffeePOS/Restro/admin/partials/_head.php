@@ -25,7 +25,7 @@
     <script src="assets/js/swal.js"></script>
     <!--Load Swal-->
     <?php if (isset($success)) { ?>
-        <!--This code for injecting success alert-->
+        
         <script>
             setTimeout(function() {
                     swal("Success", "<?php echo $success; ?>", "success");
@@ -35,7 +35,7 @@
 
     <?php } ?>
     <?php if (isset($err)) { ?>
-        <!--This code for injecting error alert-->
+        <!--Codeชุดนี้สำหรับการแจ้งเตือนข้อผิดพลาดในการแทรก-->
         <script>
             setTimeout(function() {
                     swal("Failed", "<?php echo $err; ?>", "error");
@@ -45,7 +45,7 @@
 
     <?php } ?>
     <?php if (isset($info)) { ?>
-        <!--This code for injecting info alert-->
+        <!--Codeนี้สำหรับใส่การแจ้งเตือนข้อมูล-->
         <script>
             setTimeout(function() {
                     swal("Success", "<?php echo $info; ?>", "info");
