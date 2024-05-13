@@ -3,6 +3,8 @@ session_start();
 include('config/config.php');
 include('config/checklogin.php');
 include('config/code-generator.php');
+//เริ่มต้นด้วยการเรียกใช้ session_start() เพื่อเริ่มเซสชัน และ include ไฟล์ config.php, checklogin.php, และ code-generator.php 
+//เพื่อเรียกใช้งานการเชื่อมต่อฐานข้อมูล MySQL, การตรวจสอบสถานะการเข้าสู่ระบบของผู้ใช้, และรหัสสร้างรหัสอัตโนมัติตามลำดับ 
 
 check_login();
 //Udpate Staff
@@ -34,8 +36,17 @@ if (isset($_POST['UpdateStaff'])) {
 require_once('partials/_head.php');
 ?>
 
+  <!--เตรวจสอบว่าผู้ใช้ได้ทำการส่งข้อมูลแบบ POST ที่มีชื่อ "UpdateStaff" หรือไม่ หากมี ให้ดำเนินการต่อไป -->
+  <!--ตรวจสอบว่าข้อมูลที่ส่งมาไม่มีค่าว่าง ซึ่งรวมถึง staff_number, staff_name, staff_email, 
+  และ staff_password ถ้ามีข้อมูลว่าง จะกำหนดข้อความข้อผิดพลาดในตัวแปร $err ว่า "Blank Values Not Accepted"
+  <!- หากข้อมูลไม่ว่าง จะดึงข้อมูลจาก $_POST และ $_GET เกี่ยวกับ staff_number, staff_name, staff_email, staff_password, และ update 
+  โดยใช้งาน bind_param() เพื่อป้องกันการทำ SQL Injection และ execute() เพื่อประมวลผลคำสั่ง SQL UPDATE เพื่ออัปเดตข้อมูลของพนักงานในฐานข้อมูล
+   ตรวจสอบว่าคำสั่ง SQL UPDATE ประสบความสำเร็จหรือไม่ หากสำเร็จ จะกำหนดข้อความ "Staff Updated" ในตัวแปร $success และใช้ฟังก์ชัน header() 
+   Line29 เพื่อเปลี่ยนเส้นทางไปยังหน้า hrm.php ภายในเวลา 1 วินาที หากไม่สำเร็จ จะกำหนดข้อความ "Please Try Again Or Try Later" ในตัวแปร $err
 <body>
-  <!-- Sidenav -->
+  
+
+<!- Sidenav -->
   <?php
   require_once('partials/_sidebar.php');
   ?>
