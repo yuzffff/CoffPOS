@@ -40,7 +40,7 @@ require_once('partials/_head.php');
   <?php
   require_once('partials/_sidebar.php');
   ?>
-  <!-- Main content --><!-- For more projects: Visit codeastro.com  -->
+  <!-- Main content -->
   <div class="main-content">
     <!-- Top navbar -->
     <?php
@@ -53,7 +53,7 @@ require_once('partials/_head.php');
         <div class="header-body">
         </div>
       </div>
-    </div><!-- For more projects: Visit codeastro.com  -->
+    </div>
     <!-- Page content -->
     <div class="container-fluid mt--8">
       <!-- Table -->
@@ -62,7 +62,7 @@ require_once('partials/_head.php');
           <div class="card shadow">
             <div class="card-header border-0">
               <h3>Please Fill All Fields</h3>
-            </div><!-- For more projects: Visit codeastro.com  -->
+            </div>
             <div class="card-body">
               <form method="POST" enctype="multipart/form-data">
                 <div class="form-row">
@@ -76,7 +76,7 @@ require_once('partials/_head.php');
                     <input type="text" name="prod_code" value="<?php echo $alpha; ?>-<?php echo $beta; ?>" class="form-control" value="">
                   </div>
                 </div>
-                <hr><!-- For more projects: Visit codeastro.com  -->
+                <hr>
                 <div class="form-row">
                   <div class="col-md-6">
                     <label>Product Image</label>
@@ -94,7 +94,7 @@ require_once('partials/_head.php');
                     <textarea rows="5" name="prod_desc" class="form-control" value=""></textarea>
                   </div>
                 </div>
-                <br><!-- For more projects: Visit codeastro.com  -->
+                <br>
                 <div class="form-row">
                   <div class="col-md-6">
                     <input type="submit" name="addProduct" value="Add Product" class="btn btn-success" value="">
@@ -116,5 +116,5 @@ require_once('partials/_head.php');
   require_once('partials/_scripts.php');
   ?>
 </body>
-<!-- For more projects: Visit codeastro.com  -->
+
 </html>
