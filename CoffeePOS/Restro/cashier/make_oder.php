@@ -54,7 +54,7 @@ require_once('partials/_head.php');
         <div class="header-body">
         </div>
       </div>
-    </div><!-- For more projects: Visit codeastro.com  -->
+    </div>
     <!-- Page content -->
     <div class="container-fluid mt--8">
       <!-- Table -->
@@ -96,7 +96,7 @@ require_once('partials/_head.php');
                     <input type="text" name="order_code" value="<?php echo $alpha; ?>-<?php echo $beta; ?>" class="form-control" value="">
                   </div>
                 </div>
-                <hr><!-- For more projects: Visit codeastro.com  -->
+                <hr>
                 <?php
                 $prod_id = $_GET['prod_id'];
                 $ret = "SELECT * FROM  rpos_products WHERE prod_id = '$prod_id'";
@@ -122,7 +122,7 @@ require_once('partials/_head.php');
                     <input type="submit" name="make" value="Make Order" class="btn btn-success" value="">
                   </div>
                 </div>
-              </form><!-- For more projects: Visit codeastro.com  -->
+              </form>
             </div>
           </div>
         </div>
@@ -137,6 +137,6 @@ require_once('partials/_head.php');
   <?php
   require_once('partials/_scripts.php');
   ?>
-</body><!-- For more projects: Visit codeastro.com  -->
+</body>
 
 </html>
