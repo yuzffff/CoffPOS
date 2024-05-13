@@ -6,7 +6,7 @@ include('config/code-generator.php');
 
 check_login();
 if (isset($_POST['make'])) {
-  //Prevent Posting Blank Values
+  
   if (empty($_POST["order_code"]) || empty($_POST["customer_name"]) || empty($_GET['prod_price'])) {
     $err = "Blank Values Not Accepted";
   } else {
@@ -19,13 +19,13 @@ if (isset($_POST['make'])) {
     $prod_price = $_GET['prod_price'];
     $prod_qty = $_POST['prod_qty'];
 
-    //Insert Captured information to a database table
+    
     $postQuery = "INSERT INTO rpos_orders (prod_qty, order_id, order_code, customer_id, customer_name, prod_id, prod_name, prod_price) VALUES(?,?,?,?,?,?,?,?)";
     $postStmt = $mysqli->prepare($postQuery);
-    //bind paramaters
+    
     $rc = $postStmt->bind_param('ssssssss', $prod_qty, $order_id, $order_code, $customer_id, $customer_name, $prod_id, $prod_name, $prod_price);
     $postStmt->execute();
-    //declare a varible which will be passed to alert function
+    
     if ($postStmt) {
       $success = "Order Submitted" && header("refresh:1; url=payments.php");
     } else {
@@ -33,6 +33,12 @@ if (isset($_POST['make'])) {
     }
   }
 }
+
+//Codeนี้มีหน้าที่ในการสร้างคำสั่ง SQL เพื่อบันทึกข้อมูลการสั่งซื้อลงในDatabase
+//Codeจะรับค่าที่Userป้อนผ่านฟอร์มการทำรายการสั่งซื้อ และตรวจสอบว่ามีข้อมูลที่จำเป็นไม่ว่างเปล่าหรือไม่ โดยข้อมูลที่จำเป็นรวมถึง order_code, customer_name, และ prod_price
+//หากข้อมูลถูกต้องและไม่ว่างเปล่า Codeจะทำการสร้างคำสั่ง SQL INSERT เพื่อเพิ่มข้อมูลการทำรายการสั่งซื้อลงในDatabase โดยใช้ค่าที่ได้รับจากฟอร์มและค่าที่สร้างโดย code generator
+//หลังจากที่ทำการสร้างรายการสั่งซื้อสำเร็จแล้ว จะทำการเปลี่ยนเส้นทางไปยังหน้า payments.php ซึ่งเป็นหน้าที่แสดงรายการการชำระเงิน
+
 require_once('partials/_head.php');
 ?>
 
@@ -82,6 +88,11 @@ require_once('partials/_head.php');
                       ?>
                         <option><?php echo $cust->customer_name; ?></option>
                       <?php } ?>
+                        <!--มีหน้าที่ในการโหลดข้อมูลลูกค้าทั้งหมดจากฐานข้อมูลและแสดงเป็นตัวเลือกในเมนู dropdown ในฟอร์ม HTML-->
+                        <!--Codeจะสร้างคำสั่ง SQL SELECT เพื่อดึงข้อมูลลูกค้าทั้งหมดจากตาราง rpos_customers-->
+                        <!--ทำการเตรียมและ execute คำสั่ง SQL ดังกล่าว และรับผลลัพธ์ที่ได้จากการ execute มาเก็บไว้ในตัวแปร $res-->
+                        <!--Codeจะวนลูปผ่านผลลัพธ์ที่ได้รับจากการ execute เพื่อแสดงข้อมูลลูกค้าแต่ละรายการในรูปแบบของตัวเลือก (option) ในเมนู dropdown ของฟอร์ม HTML-->
+                        <!--แต่ละชื่อลูกค้าจะถูกแสดงในรูปแบบของตัวเลือกในเมนู dropdown ซึ่งสามารถเลือกได้จากฟอร์ม HTML ที่ส่งข้อมูลไปยังเซิร์ฟเวอร์-->
                     </select>
                     <input type="hidden" name="order_id" value="<?php echo $orderid; ?>" class="form-control">
                   </div>
