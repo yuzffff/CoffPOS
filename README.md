@@ -1,3 +1,24 @@
 # Sorapat
 # Tanakorn
 # Nattawut
+
+
+
+**Database Name: cposystem**
+
+**Developed by Tanakorn Nattawut Sorapat**
+
+**Recommended PHP Version 7.4**
+
+
+**Admin Login Details**
+
+Email	: admin@mail.com
+Password: codeastro.com
+
+**Cashier Login Details**
+
+Email	: go@mail.com
+Password: 123456
+
+
