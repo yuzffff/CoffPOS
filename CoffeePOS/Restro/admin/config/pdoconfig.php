@@ -12,4 +12,7 @@
     {
          $e->getMessage();
     }
+    //ใช้ PDO (PHP Data Objects) เป็นวิธีที่ปลอดภัยและมีประสิทธิภาพในการเชื่อมต่อกับDatabase MySQL ในส่วน try เเละ catch, 
+    //ซึ่งจะพยายามเชื่อมต่อกับDatabase โดยใช้ข้อมูลการเข้าถึงที่มีการกำหนดขึ้น ถ้ามีข้อผิดพลาดเกิดขึ้นในการเชื่อมต่อ PDO 
+    //จะส่งERRORมาในรูปแบบของ PDOException Ref.Patiphan Phengpao
 ?>
