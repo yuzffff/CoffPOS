@@ -81,7 +81,7 @@ require_once('partials/_head.php');
                       </td>
                       <td><?php echo $prod->prod_code; ?></td>
                       <td><?php echo $prod->prod_name; ?></td>
-                      <td>$ <?php echo $prod->prod_price; ?></td>
+                      <td>฿ <?php echo $prod->prod_price; ?></td>
                       <td>
                         <a href="products.php?delete=<?php echo $prod->prod_id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">
                           <button class="btn btn-sm btn-danger">
