@@ -84,37 +84,37 @@ while ($admin = $res->fetch_object()) {
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="dashboard.php">
-              <i class="ni ni-tv-2 text-primary"></i> Dashboard
+              <i class="ni ni-tv-2 text-dark"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="hrm.php">
-              <i class="fas fa-user-tie text-primary"></i> Add Staff
+              <i class="fas fa-user-tie text-dark"></i> Add Staff
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="customes.php">
-              <i class="fas fa-users text-primary"></i> Customers
+              <i class="fas fa-users text-dark"></i> Customers
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="products.php">
-              <i class="ni ni-bullet-list-67 text-primary"></i>Products
+              <i class="ni ni-bullet-list-67 text-dark"></i>Products
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="orders.php">
-              <i class="ni ni-cart text-primary"></i> Orders
+              <i class="ni ni-cart text-dark"></i> Orders
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="payments.php">
-              <i class="ni ni-credit-card text-primary"></i> Payments
+              <i class="ni ni-credit-card text-dark"></i> Payments
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="receipts.php">
-              <i class="fas fa-file-invoice-dollar text-primary"></i> Receipts
+              <i class="fas fa-file-invoice-dollar text-dark"></i> Receipts
             </a>
           </li>
         </ul>
