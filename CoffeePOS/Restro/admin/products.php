@@ -3,11 +3,12 @@ session_start();
 include('config/config.php');
 include('config/checklogin.php');
 check_login();
+
 if (isset($_GET['delete'])) {
   $id = intval($_GET['delete']);
   $adn = "DELETE FROM rpos_products WHERE prod_id = ?";
   $stmt = $mysqli->prepare($adn);
-  $stmt->bind_param('s', $id);
+  $stmt->bind_param('i', $id); // Change 's' to 'i' for integer parameter
   $stmt->execute();
   if ($stmt->affected_rows > 0) {
     $success = "Deleted";
@@ -17,9 +18,9 @@ if (isset($_GET['delete'])) {
   $stmt->close();
   header("refresh:1; url=products.php");
 }
+
 require_once('partials/_head.php');
 ?>
-
 
 <body>
   <!-- Sidenav -->
@@ -33,8 +34,8 @@ require_once('partials/_head.php');
     require_once('partials/_topnav.php');
     ?>
     <!-- Header -->
-    <div style="background-image: url(assets/img/theme/restro01.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
-    <span class="mask bg-gradient-dark opacity-4"></span>
+    <div style="background-image: url(assets/img/theme/restro00.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
+      <span class="mask bg-gradient-dark opacity-8"></span>
       <div class="container-fluid">
         <div class="header-body">
         </div>
@@ -65,7 +66,7 @@ require_once('partials/_head.php');
                 </thead>
                 <tbody>
                   <?php
-                  $ret = "SELECT * FROM  rpos_products ";
+                  $ret = "SELECT * FROM rpos_products";
                   $stmt = $mysqli->prepare($ret);
                   $stmt->execute();
                   $res = $stmt->get_result();
@@ -74,19 +75,15 @@ require_once('partials/_head.php');
                     <tr>
                       <td>
                         <?php
-                        if ($prod->prod_img) {
-                          echo "<img src='assets/img/products/$prod->prod_img' height='60' width='60 class='img-thumbnail'>";
-                        } else {
-                          echo "<img src='assets/img/products/default.jpg' height='60' width='60 class='img-thumbnail'>";
-                        }
-
+                        $imagePath = 'assets/img/products/' . ($prod->prod_img ? $prod->prod_img : 'default.jpg');
+                        echo "<img src='$imagePath' height='60' width='60' class='img-thumbnail'>";
                         ?>
                       </td>
                       <td><?php echo $prod->prod_code; ?></td>
                       <td><?php echo $prod->prod_name; ?></td>
-                      <td>฿ <?php echo $prod->prod_price; ?></td>
+                      <td>$ <?php echo $prod->prod_price; ?></td>
                       <td>
-                        <a href="products.php?delete=<?php echo $prod->prod_id; ?>">
+                        <a href="products.php?delete=<?php echo $prod->prod_id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">
                           <button class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                             Delete
@@ -108,6 +105,8 @@ require_once('partials/_head.php');
           </div>
         </div>
       </div>
+    </div>
+  </div>
       <!-- Footer -->
       <?php
       require_once('partials/_footer.php');
