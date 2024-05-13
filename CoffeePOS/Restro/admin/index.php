@@ -63,7 +63,7 @@ require_once('partials/_head.php');
                   <label class="custom-control-label" for=" customCheckLogin">
                     <span class="text-muted">Remember Me</span>
                   </label>
-                </div><!-- For more projects: Visit codeastro.com  -->
+                </div>
                 <div class="text-center">
                   <button type="submit" name="login" class="btn btn-primary my-4">Log In</button>
                 </div>

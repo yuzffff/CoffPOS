@@ -6,8 +6,7 @@ include('config/code-generator.php');
 
 check_login();
 if (isset($_POST['make'])) {
-	//Visit codeastro.com for more projects
-  //Prevent Posting Blank Values
+	//ป้องกันการโพสต์ค่าที่ว่างเปล่า
   if (empty($_POST["order_code"]) || empty($_POST["customer_name"]) || empty($_GET['prod_price'])) {
     $err = "Blank Values Not Accepted";
   } else {
@@ -20,13 +19,13 @@ if (isset($_POST['make'])) {
     $prod_price = $_GET['prod_price'];
     $prod_qty = $_POST['prod_qty'];
 
-    //Insert Captured information to a database table
+    //แทรกข้อมูลที่บันทึกลงในตาราง database
     $postQuery = "INSERT INTO rpos_orders (prod_qty, order_id, order_code, customer_id, customer_name, prod_id, prod_name, prod_price) VALUES(?,?,?,?,?,?,?,?)";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
     $rc = $postStmt->bind_param('ssssssss', $prod_qty, $order_id, $order_code, $customer_id, $customer_name, $prod_id, $prod_name, $prod_price);
     $postStmt->execute();
-    //declare a varible which will be passed to alert function
+    //ประกาศตัวแปรที่จะส่งไปฟังก์ชั่นการแจ้งเตือน
     if ($postStmt) {
       $success = "Order Submitted" && header("refresh:1; url=payments.php");
     } else {
@@ -55,7 +54,7 @@ require_once('partials/_head.php');
         <div class="header-body">
         </div>
       </div>
-    </div><!-- For more projects: Visit codeastro.com  -->
+    </div>
     <!-- Page content -->
     <div class="container-fluid mt--8">
       <!-- Table -->
@@ -97,7 +96,7 @@ require_once('partials/_head.php');
                     <input type="text" name="order_code" value="<?php echo $alpha; ?>-<?php echo $beta; ?>" class="form-control" value="">
                   </div>
                 </div>
-                <hr><!-- For more projects: Visit codeastro.com  -->
+                <hr>
                 <?php
                 $prod_id = $_GET['prod_id'];
                 $ret = "SELECT * FROM  rpos_products WHERE prod_id = '$prod_id'";
@@ -123,7 +122,7 @@ require_once('partials/_head.php');
                     <input type="submit" name="make" value="Make Order" class="btn btn-success" value="">
                   </div>
                 </div>
-              </form><!-- For more projects: Visit codeastro.com  -->
+              </form>
             </div>
           </div>
         </div>
@@ -138,6 +137,6 @@ require_once('partials/_head.php');
   <?php
   require_once('partials/_scripts.php');
   ?>
-</body><!-- For more projects: Visit codeastro.com  -->
+</body>
 
 </html>
