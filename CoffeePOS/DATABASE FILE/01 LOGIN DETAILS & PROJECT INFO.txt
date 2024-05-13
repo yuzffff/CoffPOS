@@ -1,8 +1,8 @@
-**Log on to codeastro.com for more projects!***
 
-**Database Name: rposystem**
 
-**Developed by Martin Mbithi Nzilani**
+**Database Name: cposystem**
+
+**Developed by Tanakorn Nattawut Sorapat**
 
 **Recommended PHP Version 7.4**
 
@@ -14,7 +14,7 @@ Password: codeastro.com
 
 **Cashier Login Details**
 
-Email	: cashier@mail.com
-Password: codeastro.com
+Email	: go@mail.com
+Password: 123456
 
 
