@@ -99,6 +99,11 @@ require_once('partials/_head.php');
     $stmt->execute();
     $res = $stmt->get_result();
     while ($admin = $res->fetch_object()) {
+      //Code จะทำการดึงข้อมูลของadmin จากDatabase MySQL โดยใช้ SQL query เพื่อเลือกข้อมูลของadminที่มี 
+      //admin_id ตรงกับ $_SESSION['admin_id'] ซึ่งเป็นรหัสadminที่เข้าสู่ระบบใน Session ในขณะที่userเข้าสู่ระบบ
+      //ข้อมูลadminที่ดึงมาจากDatabaseถูกนำมาแสดงผลในส่วนของCodeที่อยู่ภายใน while loop โดยใช้ตัวแปร $admin 
+      //เป็นObjectที่เก็บข้อมูลของAdmin และแสดงข้อมูลเช่น ชื่อAdmin และอีเมล์adminตามที่ได้รับจากDatabase
+
     ?>
       <!-- Header -->
       <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(assets/img/theme/restro01.jpg); background-size: cover; background-position: center top;">
