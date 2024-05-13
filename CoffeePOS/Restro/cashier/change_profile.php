@@ -117,7 +117,7 @@ require_once('partials/_head.php');
                                 <div class="col-lg-3 order-lg-2">
                                     <div class="card-profile-image">
                                         <a href="#">
-                                            <img src="../admin/assets/img/theme/user-a-min.png" class="rounded-circle">
+                                            <img src="../admin/assets/img/theme/user-a-min3.png" class="rounded-circle">
                                         </a>
                                     </div>
                                 </div>
