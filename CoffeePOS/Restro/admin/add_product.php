@@ -26,7 +26,7 @@ if (isset($_POST['addProduct'])) {
     $postStmt->execute();
     //ประกาศตัวแปรที่จะส่งไปฟังก์ชั่นการแจ้งเตือน
     if ($postStmt) {
-      $success = "Product Added" && header("refresh:1; url=add_product.php");
+      $success = "Product Added" && header("refresh:1; url=products.php");
     } else {
       $err = "Please Try Again Or Try Later";
     }
