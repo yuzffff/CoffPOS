@@ -73,6 +73,12 @@ if (isset($_POST['changePassword'])) {
     }
   }
 }
+//Code จะตรวจสอบว่ามีการกดปุ่ม "ChangeProfile" หรือไม่ ถ้ามีจะดึงข้อมูลใหม่จากฟอร์มและทำการอัปเดตข้อมูลโปรไฟล์ของผู้ดูแลระบบในDatabase MySQL
+//โดยCode จะตรวจสอบว่ามีการกดปุ่ม "changePassword" หรือไม่ และทำการตรวจสอบข้อความที่ป้อนในฟอร์มเพื่อเปลี่ยนรหัสผ่าน โดยตรวจสอบว่ารหัสผ่านเก่าตรงกับที่มีในฐานข้อมูลหรือไม่ 
+//และตรวจสอบรหัสผ่านใหม่ตรงกับการยืนยันรหัสผ่านหรือไม่ หากข้อมูลถูกต้องจะทำการอัปเดตรหัสผ่านใหม่ในDatabase
+//หลังจากทำการเปลี่ยนแปลงข้อมูลหรือรหัสผ่านเสร็จสมบูรณ์ จะแสดงข้อความ "Account Updated" หรือ "Password Changed" 
+//และ redirect User ไปยังหน้า dashboard.php เพื่อกลับสู่หน้าหลักของผู้ดูแลระบบ
+
 require_once('partials/_head.php');
 ?>
 
@@ -93,6 +99,11 @@ require_once('partials/_head.php');
     $stmt->execute();
     $res = $stmt->get_result();
     while ($admin = $res->fetch_object()) {
+      //Code จะทำการดึงข้อมูลของadmin จากDatabase MySQL โดยใช้ SQL query เพื่อเลือกข้อมูลของadminที่มี 
+      //admin_id ตรงกับ $_SESSION['admin_id'] ซึ่งเป็นรหัสadminที่เข้าสู่ระบบใน Session ในขณะที่userเข้าสู่ระบบ
+      //ข้อมูลadminที่ดึงมาจากDatabaseถูกนำมาแสดงผลในส่วนของCodeที่อยู่ภายใน while loop โดยใช้ตัวแปร $admin 
+      //เป็นObjectที่เก็บข้อมูลของAdmin และแสดงข้อมูลเช่น ชื่อAdmin และอีเมล์adminตามที่ได้รับจากDatabase
+
     ?>
       <!-- Header -->
       <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(assets/img/theme/restro01.jpg); background-size: cover; background-position: center top;">
