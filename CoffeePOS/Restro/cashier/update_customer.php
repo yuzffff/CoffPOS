@@ -7,7 +7,7 @@ include('config/code-generator.php');
 check_login();
 //Add Customer
 if (isset($_POST['updateCustomer'])) {
-  //Prevent Posting Blank Values
+  //ป้องกันการโพสต์ค่าที่ว่างเปล่า
   if (empty($_POST["customer_phoneno"]) || empty($_POST["customer_name"]) || empty($_POST['customer_email']) || empty($_POST['customer_password'])) {
     $err = "Blank Values Not Accepted";
   } else {
@@ -17,13 +17,13 @@ if (isset($_POST['updateCustomer'])) {
     $customer_password = sha1(md5($_POST['customer_password'])); //Hash This 
     $update = $_GET['update'];
 
-    //Insert Captured information to a database table
+    //แทรกข้อมูลที่บันทึกลงในตาราง database
     $postQuery = "UPDATE rpos_customers SET customer_name =?, customer_phoneno =?, customer_email =?, customer_password =? WHERE  customer_id =?";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
     $rc = $postStmt->bind_param('sssss', $customer_name, $customer_phoneno, $customer_email, $customer_password, $update);
     $postStmt->execute();
-    //declare a varible which will be passed to alert function
+    //ประกาศตัวแปรที่จะส่งไปฟังก์ชั่นการแจ้งเตือน
     if ($postStmt) {
       $success = "Customer Added" && header("refresh:1; url=customes.php");
     } else {
