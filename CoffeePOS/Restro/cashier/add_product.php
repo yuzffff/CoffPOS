@@ -6,8 +6,7 @@ include('config/code-generator.php');
 
 check_login();
 if (isset($_POST['addProduct'])) {
-	//Visit codeastro.com for more projects
-  //Prevent Posting Blank Values
+	//ป้องกันการโพสต์ค่าที่ว่างเปล่า
   if (empty($_POST["prod_code"]) || empty($_POST["prod_name"]) || empty($_POST['prod_desc']) || empty($_POST['prod_price'])) {
     $err = "Blank Values Not Accepted";
   } else {
@@ -19,13 +18,13 @@ if (isset($_POST['addProduct'])) {
     $prod_desc = $_POST['prod_desc'];
     $prod_price = $_POST['prod_price'];
 
-    //Insert Captured information to a database table
+    //แทรกข้อมูลที่บันทึกลงในตาราง database
     $postQuery = "INSERT INTO rpos_products (prod_id, prod_code, prod_name, prod_img, prod_desc, prod_price ) VALUES(?,?,?,?,?,?)";
     $postStmt = $mysqli->prepare($postQuery);
     //bind paramaters
     $rc = $postStmt->bind_param('ssssss', $prod_id, $prod_code, $prod_name, $prod_img, $prod_desc, $prod_price);
     $postStmt->execute();
-    //declare a varible which will be passed to alert function
+    //ประกาศตัวแปรที่จะส่งไปฟังก์ชั่นการแจ้งเตือน
     if ($postStmt) {
       $success = "Product Added" && header("refresh:1; url=add_product.php");
     } else {
