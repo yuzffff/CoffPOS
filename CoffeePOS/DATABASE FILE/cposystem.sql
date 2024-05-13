@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 13, 2024 at 07:14 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.1.17
+-- Host: localhost:8889
+-- Generation Time: May 13, 2024 at 07:07 PM
+-- Server version: 5.7.39
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,14 +32,14 @@ CREATE TABLE `rpos_admin` (
   `admin_name` varchar(200) NOT NULL,
   `admin_email` varchar(200) NOT NULL,
   `admin_password` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rpos_admin`
 --
 
 INSERT INTO `rpos_admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
-('10e0b6dc958adfb5b094d8935a13aeadbe783c25', 'System Admin', 'admin@mail.com', '903b21879b4a60fc9103c3334e4f6f62cf6c3a2d');
+('10e0b6dc958adfb5b094d8935a13aeadbe783c25', 'Admin1', 'admin@mail.com', '903b21879b4a60fc9103c3334e4f6f62cf6c3a2d');
 
 -- --------------------------------------------------------
 
@@ -53,8 +53,8 @@ CREATE TABLE `rpos_customers` (
   `customer_phoneno` varchar(200) NOT NULL,
   `customer_email` varchar(200) NOT NULL,
   `customer_password` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rpos_customers`
@@ -92,8 +92,8 @@ CREATE TABLE `rpos_orders` (
   `prod_price` varchar(200) NOT NULL,
   `prod_qty` varchar(200) NOT NULL,
   `order_status` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rpos_orders`
@@ -120,8 +120,8 @@ CREATE TABLE `rpos_pass_resets` (
   `reset_token` varchar(200) NOT NULL,
   `reset_email` varchar(200) NOT NULL,
   `reset_status` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rpos_pass_resets`
@@ -143,8 +143,8 @@ CREATE TABLE `rpos_payments` (
   `customer_id` varchar(200) NOT NULL,
   `pay_amt` varchar(200) NOT NULL,
   `pay_method` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rpos_payments`
@@ -179,22 +179,25 @@ CREATE TABLE `rpos_products` (
   `prod_img` varchar(200) NOT NULL,
   `prod_desc` longtext NOT NULL,
   `prod_price` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rpos_products`
 --
 
 INSERT INTO `rpos_products` (`prod_id`, `prod_code`, `prod_name`, `prod_img`, `prod_desc`, `prod_price`, `created_at`) VALUES
-('06dc36c1be', 'FCWU-5762', 'Philly Cheesesteak', '', 'A cheesesteak is a sandwich made from thinly sliced pieces of beefsteak and melted cheese in a long hoagie roll. A popular regional fast food, it has its roots in the U.S. city of Philadelphia, Pennsylvania.', '8', '2024-05-13 14:30:43.165452'),
-('14c7b6370e', 'QZHM-0391', 'Reuben Sandwich', 'reubensandwich.jpg', 'The Reuben sandwich is a North American grilled sandwich composed of corned beef, Swiss cheese, sauerkraut, and Thousand Island dressing or Russian dressing, grilled between slices of rye bread. It is associated with kosher-style delicatessens, but is not kosher because it combines meat and cheese.', '8', '2022-09-03 10:58:04.069144'),
-('1e0fa41eee', 'ICFU-1406', 'Submarine Sandwich', 'submarine_sndwh.jpg', 'A submarine sandwich, commonly known as a sub, hoagie, hero, Italian, grinder, wedge, or a spuckie, is a type of American cold or hot sandwich made from a cylindrical bread roll split lengthwise and filled with meats, cheeses, vegetables, and condiments. It has many different names.', '8', '2022-09-03 10:55:23.020144'),
-('2b976e49a0', 'CEWV-9438', 'Cheeseburger', 'cheeseburgers.jpg', 'A cheeseburger is a hamburger topped with cheese. Traditionally, the slice of cheese is placed on top of the meat patty. The cheese is usually added to the cooking hamburger patty shortly before serving, which allows the cheese to melt. Cheeseburgers can include variations in structure, ingredients and composition.', '3', '2022-09-03 10:45:47.282634'),
-('2fdec9bdfb', 'UJAK-9614', 'Jambalaya', 'Jambalaya.jpg', 'Jambalaya is an American Creole and Cajun rice dish of French, African, and Spanish influence, consisting mainly of meat and vegetables mixed with rice.', '9', '2022-09-03 10:48:49.593618'),
-('31dfcc94cf', 'SYQP-3710', 'Buffalo Wings', 'buffalo_wings.jpg', 'A Buffalo wing in American cuisine is an unbreaded chicken wing section that is generally deep-fried and then coated or dipped in a sauce consisting of a vinegar-based cayenne pepper hot sauce and melted butter prior to serving.', '11', '2022-09-03 10:51:09.829079'),
-('4e68e0dd49', 'QLKW-0914', 'Caramel Macchiato', '', 'Steamed milk, espresso and caramel; what could be more enticing? This blissful flavor is a favorite of coffee lovers due to its deliciously bold taste of creamy caramel and strong coffee flavor. These', '4', '2022-09-03 08:55:51.237667'),
-('97972e8d63', 'CVWJ-6492', 'Irish Coffee', 'irishcoffee.jpg', 'Irish coffee is a caffeinated alcoholic drink consisting of Irish whiskey, hot coffee, and sugar, stirred, and topped with cream The coffee is drunk through the cream', '11', '2022-09-03 13:08:19.157649');
+('06dc36c1be', 'FCWU-5762', 'Iced Cappuccino ', 'Iced Cappuccino 1080.png', '.', '120', '2024-05-13 18:42:20.562113'),
+('14c7b6370e', 'QZHM-0391', 'Iced Latte Reserve', 'Iced Latte Reserve.png', '.', '120', '2024-05-13 18:42:51.021666'),
+('1e0fa41eee', 'ICFU-1406', 'Shakerato Bianco Over Ice', 'Shakerato Bianco Over Ice.png', '.', '120', '2024-05-13 18:43:34.000628'),
+('2b976e49a0', 'CEWV-9438', 'Starbucks Reserve Undertow', 'Starbucks Reserve Undertow.png', '.', '100', '2024-05-13 18:44:10.941591'),
+('2fdec9bdfb', 'UJAK-9614', 'Salted Caramel Espresso', 'Salted Caramel Espresso.png', '.', '100', '2024-05-13 18:50:22.131349'),
+('31dfcc94cf', 'SYQP-3710', 'Starbucks Reserve Iced Americano', 'Starbucks Reserve Iced Americano.png', '.', '100', '2024-05-13 18:52:42.787590'),
+('4e68e0dd49', 'QLKW-0914', 'Starbucks Piccolo Latte', 'Starbucks Piccolo Latte.png', '.', '100', '2024-05-13 18:53:50.273270'),
+('97972e8d63', 'CVWJ-6492', 'Starbucks Reserve Latte', 'Starbucks Reserve Latte.png', '.', '120', '2024-05-13 18:55:45.665099'),
+('af429f8ad7', 'XLPK-7618', 'Java Chip Frappuccino', 'Java Chip Frappuccino.jpeg', '-', '140', '2024-05-13 18:58:25.834004'),
+('d0e96cc3d0', 'TSFV-5172', 'Espresso ', 'Espresso 1080.png', '-', '80', '2024-05-13 18:57:56.750657'),
+('f7fd166d0f', 'WKLV-6320', 'Green Tea Latte', 'Green Tea Latte.png', '-', '90', '2024-05-13 18:57:24.126627');
 
 -- --------------------------------------------------------
 
@@ -208,15 +211,15 @@ CREATE TABLE `rpos_staff` (
   `staff_number` varchar(200) NOT NULL,
   `staff_email` varchar(200) NOT NULL,
   `staff_password` varchar(200) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rpos_staff`
 --
 
 INSERT INTO `rpos_staff` (`staff_id`, `staff_name`, `staff_number`, `staff_email`, `staff_password`, `created_at`) VALUES
-(2, 'Cashier Trevor', 'QEUY-9042', 'cashier@mail.com', '903b21879b4a60fc9103c3334e4f6f62cf6c3a2d', '2022-09-04 16:11:30.581882');
+(2, 'Cashier Taoz', 'QEUY-9042', 'cashier@mail.com', 'codeastro.com', '2024-05-13 18:28:51.884809');
 
 --
 -- Indexes for dumped tables
