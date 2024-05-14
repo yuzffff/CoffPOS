@@ -10,7 +10,7 @@ if (isset($_GET['delete'])) {
   $stmt = $mysqli->prepare($adn);
   $stmt->bind_param('i', $id); // Change 's' to 'i' for integer parameter
   $stmt->execute();
-  if ($stmt->affected_rows > 0) {
+  if ($stmt->affected_rows > 0) {  //การตรวจสอบว่ามีแถวใด ๆ ที่ถูกครอบครองหรือมีผลกระทบจากการดำเนินการที่เกิดขึ้นจากคำสั่ง SQL ที่ใช้ execute มีจำนวนแถวที่มีผลกระทบมากกว่า 0 หรือไม่
     $success = "Deleted";
   } else {
     $err = "Try Again Later";
@@ -77,6 +77,15 @@ require_once('partials/_head.php');
                   $stmt->execute();
                   $res = $stmt->get_result();
                   while ($prod = $res->fetch_object()) {
+                    //ดึงข้อมูลทั้งหมดจากตาราง rpos_products ในDatabaseและแสดงผลในรูปแบบที่ต้องการในหน้าเว็บไซต์
+                    //กำหนด $ret ซึ่ง SELECT ข้อมูลทั้งหมดจากตาราง rpos_products.
+                    //เตรียมคำสั่ง SQL ในตัวแปร $stmt โดยใช้เมธอด prepare() ของอ็อบเจกต์ mysqli เพื่อเตรียมคำสั่ง SQL สำหรับการประมวลผลภายหลัง.
+                    //ดำเนินการ execute คำสั่ง SQL โดยใช้เมธอด execute() บน $stmt เพื่อส่งคำสั่งไปยังฐานข้อมูลและดึงข้อมูล.
+                    //ดึงผลลัพธ์ที่ได้จากการ execute ในรูปแบบของ mysqli_result ในตัวแปร $res.
+                    //ใช้ลูป while เพื่อวนลูปผลลัพธ์ที่ได้จากการดึงข้อมูลทีละแถว.
+                    //ภายในลูป while จะดึงข้อมูลแต่ละแถวในรูปแบบของอ็อบเจกต์โดยใช้เมธอด fetch_object() บน $res.
+                    //ตัวแปร $prod จะเก็บข้อมูลของแถวปัจจุบันที่ถูกดึงออกมาในรูปแบบของอ็อบเจกต์ของคลาสที่เป็นโมเดลของตาราง rpos_products.
+                    //ดึงข้อมูลจากอ็อบเจกต์นั้นมาใช้งานตามที่ต้องการภายในลูป while เช่น แสดงข้อมูลในหน้าเว็บไซต์หรือทำการประมวลผลอื่นๆ ตามที่ต้องการ.
                   ?>
                     <tr>
                       <td>
@@ -90,6 +99,7 @@ require_once('partials/_head.php');
                       <td>฿ <?php echo $prod->prod_price; ?></td>
                       <td>
                         <a href="products.php?delete=<?php echo $prod->prod_id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">
+                        <!--มื่อผู้ใช้คลิกที่ลิงก์นี้และยืนยันการลบ โปรแกรมจะส่งคำขอลบไปยังหน้า products.php พร้อมกับ prod_id ของสินค้าที่ต้องการลบในรูปแบบของพารามิเตอร์ ซึ่งจะทำให้โปรแกรมทำการลบสินค้านั้นออกจากฐานข้อมูล -->
                           <button class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                             Delete
