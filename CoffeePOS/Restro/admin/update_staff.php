@@ -62,7 +62,13 @@ require_once('partials/_head.php');
     $res = $stmt->get_result();
     while ($staff = $res->fetch_object()) {
     ?>
-      <!-- Header -->
+<!-- สร้างคำสั่ง SQL SELECT เพื่อดึงข้อมูลของพนักงานจากตาราง rpos_staff โดยกำหนดเงื่อนไขว่า staff_id ต้องเท่ากับค่าที่ได้รับมาจากพารามิเตอร์ 'update'
+prepare() เพื่อเตรียมคำสั่ง SQL สำหรับการประมวลผล,execute() เพื่อประมวลผลคำสั่ง SQL
+get_result() เพื่อดึงผลลัพธ์จากการสั่งคำสั่ง SQL และเก็บไว้ในตัวแปร $res เป็นออบเจกต์ที่เป็นผลลัพธ์ของการสั่งคำสั่ง SQL
+while เพื่อวนลูปผลลัพธ์ที่ได้รับจากการดึงข้อมูล โดยใช้เมท็อด fetch_object() เพื่อดึงข้อมูลเป็นออบเจกต์ ซึ่งในที่นี้คือข้อมูลของพนักงาน
+-->
+      
+<!-- Header -->
       <div style="background-image: url(assets/img/theme/restro01.jpg); background-size: cover;" class="header  pb-8 pt-5 pt-md-8">
       <span class="mask bg-gradient-dark opacity-4"></span>
         <div class="container-fluid">
