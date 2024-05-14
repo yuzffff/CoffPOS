@@ -86,6 +86,7 @@ require_once('partials/_head.php');
                                             <td><?php echo $order->prod_name; ?></td>
                                             <td>$ <?php echo $total; ?></td>
                                             <td><?php echo date('d/M/Y g:i', strtotime($order->created_at)); ?></td>
+                                            <!--ใช้เพื่อแสดงวันที่และเวลาที่อ่านได้จากฟิลด์ created_at ในวัตถุ $order โดยใช้ฟังก์ชัน date() เพื่อจัดรูปแบบของวันที่และเวลา และ strtotime() เพื่อแปลงวันที่และเวลาจากรูปแบบที่เก็บในDatabase (สมมติว่าเป็น timestamp) เป็นรูปแบบที่สามารถอ่านได้-->
                                             <td>
                                                 <a href="pay_order.php?order_code=<?php echo $order->order_code;?>&customer_id=<?php echo $order->customer_id;?>&order_status=Paid">
                                                     <button class="btn btn-sm btn-success">
