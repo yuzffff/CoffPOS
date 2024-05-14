@@ -31,7 +31,7 @@ $stmt->bind_result($sales);
 $stmt->fetch();
 $stmt->close();
 
-//ใช้การสร้างและ execute query เพื่อดึงข้อมูลจากตารางในฐานข้อมูล และเก็บผลลัพธ์ที่ได้ลงในตัวแปรผลลัพธ์ โดยใช้คำสั่ง prepare, execute, bind_result, และ fetch ในแต่ละส่วนของCode
+//ใช้การสร้างและ execute query เพื่อดึงข้อมูลจากตารางในDatabase และเก็บผลลัพธ์ที่ได้ลงในตัวแปรผลลัพธ์ โดยใช้คำสั่ง prepare, execute, bind_result, และ fetch ในแต่ละส่วนของCode
 //Code query คำสั่ง SQL เพื่อนับจำนวนแถวในตาราง rpos_customers และเก็บผลลัพธ์ลงในตัวแปร $customers.
 //คำสั่ง prepare ใช้เตรียม query สำหรับการ execute.
 //คำสั่ง execute ใช้สั่ง execute query.
