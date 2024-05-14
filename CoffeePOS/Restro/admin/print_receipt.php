@@ -40,6 +40,11 @@ $res = $stmt->get_result();
 while ($order = $res->fetch_object()) {
     $total = ($order->prod_price * $order->prod_qty);
 
+    //ส่วนดึงข้อมูลคำสั่งซื้อจากDatabaseโดยใช้รหัสคำสั่งซื้อที่รับมาผ่านParameterใน URL (order_code) และคำนวณยอดรวมเงินของคำสั่งซื้อด้วย
+    //Codeรับค่ารหัสคำสั่งซื้อจากParameterที่ระบุใน URL โดยใช้ $_GET['order_code'] และเก็บไว้ในตัวแปร $order_code
+    //สร้างคำสั่ง SQL เพื่อดึงข้อมูลคำสั่งซื้อจากตาราง 'rpos_orders' โดยใช้รหัสคำสั่งซื้อเป็นเงื่อนไข และ execute คำสั่ง SQL นั้น เพื่อดึงข้อมูลจริงจากDatabase
+    //คำนวณยอดรวมเงินโดยนำราคาสินค้าคูณกับปริมาณที่ซื้อ (prod_price * prod_qty) และเก็บผลลัพธ์ในตัวแปร $total
+    //ข้อมูลคำสั่งซื้อทั้งหมดที่ดึงมาจะถูกนำมาใช้ในการแสดงผลในส่วนต่อไปของCode
 ?>
 
     <body>
@@ -139,5 +144,11 @@ while ($order = $res->fetch_object()) {
         window.print();
         $('body').html(restorepage);
     }
+    //printContent(el) ทำหน้าที่ในการพิมพ์เนื้อหาที่อยู่ในองค์ประกอบ (element) ที่ระบุโดย el
+    //var restorepage = $('body').html(); นำเนื้อหาทั้งหน้าเว็บมาเก็บไว้ในตัวแปร restorepage โดยใช้ jQuery เลือก element body และดึงเนื้อหา HTML ทั้งหมดของหน้าเว็บ
+    //var printcontent = $('#' + el).clone(); เลือก element ที่ต้องการพิมพ์โดยใช้ jQuery เลือก element ด้วย ID ที่ระบุที่เข้ามาผ่านพารามิเตอร์ el และทำการคัดลอก element นั้นๆ โดยใช้ .clone() method แล้วเก็บไว้ในตัวแปร printcontent
+    //$('body').empty().html(printcontent); ล้างเนื้อหาทั้งหมดของ element body ด้วย .empty() method และใส่เนื้อหาที่คัดลอกไว้ใน printcontent ด้วย .html() method
+    //window.print(); เปิดหน้าต่างการพิมพ์
+    //$('body').html(restorepage); คืนค่าเนื้อหาเว็บเพื่อให้เนื้อหาทั้งหมดกลับมาเหมือนเดิมหลังจากการพิมพ์เสร็จสิ้น
 </script>
 <?php } ?>
